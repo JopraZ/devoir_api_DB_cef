@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Réservation de parking</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Liste des parkings</h1>
+            <ul id="liste-parkings"></ul>
+
+            <h2>Réserver une place</h2>
+
+            <form id="reservation-form">
+                <input id="parkingId" type="number" placeholder="n° de parking">
+                <input id="city" placeholder="Ville">
+                <input id="clientName" placeholder="Votre nom">
+
+                <select id="vehicle">
+                    <option value="car">Voiture</option>
+                    <option value="bike">Moto</option>
+                </select>
+
+                <input id="licensePlate" placeholder="Plaque d'immatriculation">
+                <input id="checkin" type="datetime-local" >
+                <input id="checkout" type="datetime-local">
+
+                <button type="submit">Réserver</button>
+            </form>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
