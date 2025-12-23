@@ -9,6 +9,8 @@ const bcrypt = require('bcryptjs');
 
 // Import du modèle User
 const User = require('./models/userModel');
+const Catway = require('./models/catwayModel');
+const Reservation = require('./models/reservationModel');
 
 // Connexion à MongoDB Atlas
 mongoose
@@ -21,9 +23,21 @@ mongoose
         fs.readFileSync('./datas/user.json', 'utf-8')
         );
 
+        const catways = JSON.parse(
+        fs.readFileSync('./datas/catways.json', 'utf-8')
+        );
+
+        const reservations = JSON.parse(
+        fs.readFileSync('./datas/reservations.json', 'utf-8')
+        );
+
         // Suppression des utilisateurs existants
         await User.deleteMany({});
 
+        // Suppression des catways existants
+        await Catway.deleteMany({});
+
+        await Reservation.deleteMany({});
         // Hashage des mots de passe avant insertion
         for (let user of users) {
         user.password = await bcrypt.hash(user.password, 10);
@@ -31,6 +45,8 @@ mongoose
 
         // Insertion des utilisateurs dans MongoDB
         await User.insertMany(users);
+        await Catway.insertMany(catways);
+        await Reservation.insertMany(reservations);
 
         console.log('Données insérées avec succès');
 

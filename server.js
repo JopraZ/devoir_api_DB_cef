@@ -13,8 +13,11 @@ app.use(express.json());
 const authRoutes = require('./router/authRoutes');
 app.use('/api', authRoutes);
 
-const catwayRoutes = require('./router/catwayRoutes');
-app.use('/catways', catwayRoutes);
+const catwayRoute = require('./router/catwayRoutes');
+app.use('/catways', catwayRoute);
+
+const reservationRoutes = require('./router/reservationRoutes');
+app.use('/reservations', reservationRoutes);
 
 // Lancement du serveur
 app.listen(8080, () => {

@@ -1,4 +1,5 @@
 const Catway = require('../models/catwayModel');
+const Reservation = require('../models/reservationModel');
 
 // GET /catways
 exports.getAll = async (req, res) => {
@@ -11,6 +12,31 @@ exports.getOne = async (req, res) => {
   const catway = await Catway.findById(req.params.id);
   res.json(catway);
 };
+
+exports.getReservations = async (req, res) => {
+
+  try {
+    const catwayNumber = Number(req.params.catwayNumber);
+    console.log('catwayNumber =', catwayNumber);
+
+    const catway = await Catway.findOne({ catwayNumber });
+    console.log('catway trouvé =', catway);
+
+    if (!catway) {
+      return res.status(404).json({ message: 'Catway introuvable' });
+    }
+
+    const reservations = await Reservation.find({ catwayNumber });
+    console.log('reservations =', reservations);
+
+    res.json(reservations);
+
+  } catch (error) {
+    console.error('❌ ERREUR getReservations:', error);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 
 // POST /catways
 exports.create = async (req, res) => {
