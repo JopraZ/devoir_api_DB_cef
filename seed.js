@@ -13,8 +13,7 @@ const Catway = require('./models/catwayModel');
 const Reservation = require('./models/reservationModel');
 
 // Connexion à MongoDB Atlas
-mongoose
-    .connect('mongodb+srv://louisdemol9_db_user:xerNzZBOR31jg2qB@essai.um9bwcc.mongodb.net/?appName=essai')
+mongoose.connect('mongodb+srv://louisdemol9_db_user:xerNzZBOR31jg2qB@essai.um9bwcc.mongodb.net/?appName=essai')
     .then(async () => {
         console.log('MongoDB connecté pour le seed');
 
@@ -31,13 +30,10 @@ mongoose
         fs.readFileSync('./datas/reservations.json', 'utf-8')
         );
 
-        // Suppression des utilisateurs existants
         await User.deleteMany({});
-
-        // Suppression des catways existants
         await Catway.deleteMany({});
-
         await Reservation.deleteMany({});
+
         // Hashage des mots de passe avant insertion
         for (let user of users) {
         user.password = await bcrypt.hash(user.password, 10);
