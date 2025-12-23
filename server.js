@@ -1,15 +1,22 @@
+// Import d’Express (framework pour créer l’API)
 const express = require('express');
 const app = express();
 
+// Connexion à MongoDB
 const connectDB = require('./config/db');
 connectDB();
 
+// Middleware pour lire le JSON envoyé par le client
 app.use(express.json());
 
+// Routes d’authentification (login)
 const authRoutes = require('./router/authRoutes');
 app.use('/api', authRoutes);
 
-app.listen(8080, () => {
-    console.log('Server running on port 8080');
-});
+const catwayRoutes = require('./router/catwayRoutes');
+app.use('/catways', catwayRoutes);
 
+// Lancement du serveur
+app.listen(8080, () => {
+    console.log('Server running on http://localhost:8080');
+});
