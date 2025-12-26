@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Utilisateurs</title>
+  <link rel="stylesheet" href="css/users.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <h2>Utilisateurs</h2>
+    <a href="dashboard.html">← Dashboard</a>
+  </nav>
+
+  <main class="container">
+
+    <section class="card">
+      <h3>Créer un utilisateur</h3>
+
+      <form id="user-form">
+        <input id="username" placeholder="Nom d'utilisateur" required>
+        <input id="email" type="email" placeholder="Email" required>
+        <input id="password" type="password" placeholder="Mot de passe" required>
+        <select id="role">
+          <option value="user">Utilisateur</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Ajouter</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Liste des utilisateurs</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="users-table"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script src="js/users.js"></script>
+</body>
+</html>

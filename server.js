@@ -1,17 +1,22 @@
-// Import d’Express (framework pour créer l’API)
 const express = require('express');
+const path = require('path');
 const app = express();
 
-// Connexion à MongoDB
 const connectDB = require('./config/db');
 connectDB();
 
-// Middleware pour lire le JSON envoyé par le client
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/api-doc', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'api_doc.html'));
+});
 
-// Routes d’authentification (login)
+
 const authRoutes = require('./router/authRoutes');
 app.use('/api', authRoutes);
+
+const userRoutes = require('./router/userRoutes')
+app.use('/users', userRoutes);
 
 const catwayRoute = require('./router/catwayRoutes');
 app.use('/catways', catwayRoute);
@@ -19,7 +24,6 @@ app.use('/catways', catwayRoute);
 const reservationRoutes = require('./router/reservationRoutes');
 app.use('/reservations', reservationRoutes);
 
-// Lancement du serveur
 app.listen(8080, () => {
     console.log('Server running on http://localhost:8080');
 });

@@ -4,5 +4,41 @@
         "password": "password123",
         "email": "johndoe@example.com",
         "role": "admin"
+    },
+    {
+        "username": "marion",
+        "password": "password123",
+        "email": "marion@example.com",
+        "role": "user"
+    },
+    {
+        "username": "virginie",
+        "password": "password123",
+        "email": "virginie@example.com",
+        "role": "user"
+    },
+    {
+        "username": "maxime",
+        "password": "password123",
+        "email": "maxime@example.com",
+        "role": "user"
+    },
+    {
+        "username": "louis",
+        "password": "password123",
+        "email": "louis@example.com",
+        "role": "user"
+    },
+    {
+        "username": "myriam",
+        "password": "password123",
+        "email": "myriam@example.com",
+        "role": "user"
+    },
+    {
+        "username": "jeanmichel",
+        "password": "password123",
+        "email": "jeanmichel@example.com",
+        "role": "user"
     }
 ]

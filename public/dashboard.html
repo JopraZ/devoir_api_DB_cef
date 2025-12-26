@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de bord – Port de plaisance</title>
+
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <h2>Port de Russell</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="catways.html">Catways</a></li>
+      <li><a href="reservations.html">Réservations</a></li>
+      <li><a href="users.html">Utilisateurs</a></li>
+      <li><a href="api-doc.html">Documentation API</a></li>
+      <li><button id="logout-btn">Déconnexion</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <section class="card">
+      <h3>Utilisateur connecté</h3>
+      <p><strong>Nom :</strong> <span id="username"></span></p>
+      <p><strong>Email :</strong> <span id="email"></span></p>
+      <p><strong>Date :</strong> <span id="today"></span></p>
+    </section>
+
+
+    <section class="card">
+      <h3>📅 Réservations en cours</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Catway</th>
+            <th>Client</th>
+            <th>Début</th>
+            <th>Fin</th>
+          </tr>
+        </thead>
+        <tbody id="reservations-table">
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
